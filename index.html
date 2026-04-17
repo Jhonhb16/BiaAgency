@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bia Agency | Escalado de Alto Rendimiento para E-commerce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#8930D6","primary-dim":"#6B26AB","primary-glow":"rgba(137,48,214,0.15)","on-primary":"#ffffff","background":"#080808","surface":"#080808","surface-container":"#0f0f0f","surface-container-low":"#0d0d0d","surface-container-high":"#141414","surface-container-highest":"#1c1c1c","on-surface":"#f0f0f0","on-surface-variant":"#888888","error":"#ff4d4d","outline-variant":"#2a2a2a","outline":"#444"},fontFamily:{"headline":["Inter","sans-serif"],"body":["Inter","sans-serif"],"label":["Space Grotesk","monospace"]},borderRadius:{"DEFAULT":"0px","lg":"0px","xl":"0px","full":"9999px"}}}}
+</script>
+<style>
+*{box-sizing:border-box;}::selection{background:#8930D6;color:#fff;}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}
+.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(137,48,214,0.09) 0%,transparent 70%);}
+.plan-card{transition:transform .3s ease,box-shadow .3s ease;}.plan-card:hover{transform:translateY(-6px);}
+.custom-scrollbar::-webkit-scrollbar{height:4px;}.custom-scrollbar::-webkit-scrollbar-track{background:#0d0d0d;}.custom-scrollbar::-webkit-scrollbar-thumb{background:#8930D6;}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.ticker-track{display:flex;width:max-content;animation:ticker 32s linear infinite;}.ticker-track:hover{animation-play-state:paused;}
+@keyframes logoTicker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.logo-track{display:flex;width:max-content;animation:logoTicker 22s linear infinite;}.logo-track:hover{animation-play-state:paused;}
+@keyframes slideIn{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}@keyframes slideOut{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.notif-enter{animation:slideIn .4s cubic-bezier(.22,.68,0,1.2) forwards;}.notif-exit{animation:slideOut .3s ease-in forwards;}.notif-dot{animation:pulse 1.8s ease-in-out infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.reveal{opacity:0;}.reveal.visible{animation:fadeUp .55s ease forwards;}
+@keyframes planGlow{0%,100%{box-shadow:0 0 60px rgba(137,48,214,0.30);}50%{box-shadow:0 0 100px rgba(137,48,214,0.55);}}.plan-featured{animation:planGlow 3s ease-in-out infinite;}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}.purple-shimmer{background:linear-gradient(90deg,#6B26AB 0%,#B86EFF 40%,#8930D6 60%,#6B26AB 100%);background-size:200% auto;animation:shimmer 3s linear infinite;color:#fff;}
+.agx-input{background:#1a1a1a;border:1px solid #3a3a3a;color:#f0f0f0;padding:14px 16px;width:100%;font-family:'Space Grotesk',monospace;font-size:13px;text-transform:uppercase;letter-spacing:.07em;transition:border-color .2s;outline:none;-webkit-text-fill-color:#f0f0f0;}
+.agx-input:focus{border-color:#8930D6;}.agx-input::placeholder{color:#555;-webkit-text-fill-color:#555;}
+.agx-input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #1a1a1a inset;-webkit-text-fill-color:#f0f0f0;}
+select.agx-input option{background:#1a1a1a;color:#f0f0f0;}
+.timeline-line{position:absolute;left:23px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#8930D6,rgba(137,48,214,0.05));}
+.timeline-dot{width:48px;height:48px;background:#8930D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;}
+.faq-item{border-bottom:1px solid #1c1c1c;}.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease;}.faq-answer.open{max-height:400px;}.faq-icon{transition:transform .3s ease;}.faq-icon.open{transform:rotate(45deg);}
+.review-card{transition:transform .3s ease,border-color .3s;}.review-card:hover{transform:translateY(-4px);border-color:rgba(137,48,214,.4)!important;}
+.compare-row:nth-child(even){background:rgba(137,48,214,0.02);}
+#mobile-menu{display:none;flex-direction:column;background:#080808;border-top:1px solid #1c1c1c;}
+#mobile-menu.open{display:flex;}
+#mobile-menu a{padding:16px 24px;font-family:'Space Grotesk',monospace;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#888;border-bottom:1px solid #111;transition:color .2s;}
+#mobile-menu a:hover{color:#8930D6;}
+@media(max-width:768px){h1{font-size:2.6rem!important;line-height:.92!important;}.text-8xl{font-size:2.8rem!important;}.text-7xl{font-size:2.4rem!important;}.text-6xl{font-size:2.2rem!important;}.text-5xl{font-size:1.9rem!important;}.pt-48{padding-top:7rem!important;}.pb-32{padding-bottom:3rem!important;}.py-40{padding-top:4rem!important;padding-bottom:4rem!important;}.py-32{padding-top:3rem!important;padding-bottom:3rem!important;}.sticky{position:relative!important;top:auto!important;}.plan-card{transform:none!important;}.timeline-line{left:19px!important;}.timeline-dot{width:40px!important;height:40px!important;}#notif-container{max-width:260px!important;right:10px!important;bottom:70px!important;}}
+</style>
+</head>
+<body class="bg-background text-on-surface font-body">
+<div id="notif-container" class="fixed bottom-6 right-6 z-[9998] flex flex-col gap-3 items-end pointer-events-none" style="max-width:300px"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl" style="border-bottom:1px solid #1a1a1a;">
+  <div class="flex justify-between items-center px-5 md:px-8 py-3 max-w-7xl mx-auto">
+    <a href="#"><img src="logo_bia.jpeg" alt="Bia Agency" class="h-12 w-auto object-contain"/></a>
+    <div class="hidden md:flex gap-6 items-center">
+      <a class="font-label font-bold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors text-xs" href="#proceso">Proceso</a>
+      <a class="font-label font-bold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors text-xs" href="#resultados">Resultados</a>
+      <a class="font-label font-bold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors text-xs" href="#planes">Planes</a>
+      <a class="font-label font-bold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors text-xs" href="#testimonios">Testimonios</a>
+      <a class="font-label font-bold tracking-wide uppercase text-on-surface-variant hover:text-primary transition-colors text-xs" href="#faq">FAQ</a>
+      <a href="#planes" class="bg-primary text-white font-label font-bold text-xs px-5 py-2.5 uppercase tracking-widest hover:bg-primary-dim transition-colors">Comenzar →</a>
+    </div>
+    <button class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+      <span id="ham1" class="block w-6 h-0.5 bg-on-surface transition-all duration-300"></span>
+      <span id="ham2" class="block w-6 h-0.5 bg-on-surface transition-all duration-300"></span>
+      <span id="ham3" class="block w-6 h-0.5 bg-on-surface transition-all duration-300"></span>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <a href="#proceso" onclick="closeMenu()">Proceso</a>
+    <a href="#resultados" onclick="closeMenu()">Resultados</a>
+    <a href="#planes" onclick="closeMenu()">Planes</a>
+    <a href="#testimonios" onclick="closeMenu()">Testimonios</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#planes" onclick="closeMenu()" style="color:#8930D6;border-bottom:none;">→ Comenzar ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative pt-36 md:pt-48 pb-20 md:pb-32 px-5 md:px-8 hero-gradient overflow-hidden">
+  <div class="max-w-7xl mx-auto flex flex-col items-start gap-8 md:gap-12">
+    <div class="space-y-5 max-w-5xl w-full">
+      <span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm">Escalado de Alto Rendimiento</span>
+      <h1 class="text-[2.6rem] md:text-[5rem] font-black leading-[0.9] tracking-tighter uppercase italic font-headline">
+        Tu e-commerce <span class="text-primary">no</span> necesita <span class="text-primary">más tráfico.</span><br/>Necesita empezar a vender en serio.
+      </h1>
+      <p class="text-base md:text-2xl text-on-surface-variant max-w-3xl leading-relaxed">Si ya estás vendiendo pero no logras escalar, no es falta de mercado. Es que lo que estás haciendo no está construido para crecer.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full">
+      <div class="space-y-3 w-full sm:w-auto">
+        <a href="#planes" class="bg-primary text-white font-black text-base md:text-xl px-7 md:px-10 py-4 md:py-5 uppercase flex items-center gap-3 hover:shadow-[0_0_30px_rgba(137,48,214,0.5)] hover:bg-primary-dim transition-all w-full sm:w-auto justify-center sm:justify-start">
+          👉 Quiero escalar mi tienda
+        </a>
+        <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest pl-1">No trabajamos con tiendas en cero.</p>
+      </div>
+      <div class="bg-surface-container-high p-4 md:p-6 flex flex-col gap-1 border border-primary/30 w-full sm:w-auto">
+        <span class="font-label text-[9px] text-primary uppercase tracking-widest">Social Proof</span>
+        <p class="font-black text-lg md:text-2xl tracking-tighter italic">ROAS REALES: ×12 · ×18 · ×20</p>
+      </div>
+    </div>
+  </div>
+  <div class="absolute -right-16 top-32 opacity-[0.03] select-none pointer-events-none hidden xl:block">
+    <span class="text-[22rem] font-black leading-none text-primary font-headline">BIA</span>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="overflow-hidden py-3 md:py-4" style="background:#8930D6;">
+  <div class="ticker-track">
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">Resultados Reales. Sin Promesas.</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">+6 Años de Experiencia Real</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">8 Países Trabajados</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">Meta · Google · TikTok Ads</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">No manejamos anuncios. Escalamos lo que vende.</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">Resultados Reales. Sin Promesas.</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">+6 Años de Experiencia Real</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">8 Países Trabajados</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">Meta · Google · TikTok Ads</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+    <span class="font-label font-black uppercase text-white text-xs tracking-widest whitespace-nowrap px-8">No manejamos anuncios. Escalamos lo que vende.</span><span class="font-label font-black uppercase text-white/40 text-xs whitespace-nowrap px-3">✦</span>
+  </div>
+</div>
+
+<!-- COUNTERS -->
+<section class="py-16 md:py-24 px-5 md:px-8 bg-black border-b border-outline-variant/30" id="counters">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10 md:mb-16 reveal">
+      <span class="font-label text-primary uppercase tracking-[0.3em] text-xs">Números que no mienten</span>
+      <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter italic mt-3">Los resultados hablan solos</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px" style="background:rgba(137,48,214,0.08);">
+      <div class="bg-black p-6 md:p-10 text-center flex flex-col items-center gap-3 reveal">
+        <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Facturado</span>
+        <div class="flex items-baseline gap-1"><span class="text-primary text-2xl font-black">+</span><span class="counter-val text-4xl md:text-6xl font-black italic" data-target="258" data-suffix="M">0</span><span class="text-primary text-xl font-black">USD</span></div>
+      </div>
+      <div class="bg-black p-6 md:p-10 text-center flex flex-col items-center gap-3 reveal">
+        <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">ROAS Promedio</span>
+        <div class="flex items-baseline gap-1"><span class="text-primary text-2xl font-black">×</span><span class="counter-val text-4xl md:text-6xl font-black italic" data-target="65" data-suffix="">0</span></div>
+      </div>
+      <div class="bg-black p-6 md:p-10 text-center flex flex-col items-center gap-3 reveal">
+        <span class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Años de Exp.</span>
+        <span class="counter-val text-4xl md:text-6xl font-black italic" data-target="6" data-suffix="+">0</span>
+      </div>
+      <div class="p-6 md:p-10 text-center flex flex-col items-center gap-3 reveal" style="background:rgba(137,48,214,0.1);border:1px solid rgba(137,48,214,0.25);">
+        <span class="font-label text-[10px] uppercase tracking-widest text-primary mb-1">Países</span>
+        <span class="counter-val text-4xl md:text-6xl font-black italic text-primary" data-target="8" data-suffix="">0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="py-10 md:py-16 px-5 md:px-8 bg-surface-container-low border-b border-outline-variant/20">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-center font-label text-[10px] uppercase tracking-[0.3em] text-on-surface-variant mb-8">Marcas que han confiado en el sistema</p>
+    <div class="overflow-hidden">
+      <div class="logo-track">
+        <div class="flex items-center">
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">UrbanTech</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">GlowSkin</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">FitBrands</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">NovaModa</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">EcoStore</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">PrimeMX</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">VidaFit</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">DropElite</p></div>
+        </div>
+        <div class="flex items-center">
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">UrbanTech</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">GlowSkin</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">FitBrands</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">NovaModa</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">EcoStore</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">PrimeMX</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">VidaFit</p></div>
+          <div class="px-10 py-5 border-r border-outline-variant/20 flex items-center justify-center" style="min-width:160px"><p class="font-black uppercase text-xl tracking-tighter text-on-surface-variant hover:text-primary transition-colors cursor-default">DropElite</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="text-center font-label text-[9px] uppercase tracking-widest text-on-surface-variant/30 mt-5">* Nombres de referencia. Información protegida por NDA.</p>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-20 items-start">
+    <div class="md:sticky md:top-32">
+      <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">Si esto te está <span class="text-primary">pasando,</span><br/>no eres el único.</h2>
+      <div class="h-1 w-16 md:w-24 bg-primary"></div>
+    </div>
+    <div class="space-y-8 md:space-y-12">
+      <div class="space-y-6">
+        <div class="flex items-center gap-5 group"><span class="font-label text-primary text-xl">01</span><p class="text-xl md:text-3xl font-bold text-on-surface-variant group-hover:text-white transition-colors">Estás vendiendo… pero no creces</p></div>
+        <div class="flex items-center gap-5 group"><span class="font-label text-primary text-xl">02</span><p class="text-xl md:text-3xl font-bold text-on-surface-variant group-hover:text-white transition-colors">Subes presupuesto… y todo se rompe</p></div>
+        <div class="flex items-center gap-5 group"><span class="font-label text-primary text-xl">03</span><p class="text-xl md:text-3xl font-bold text-on-surface-variant group-hover:text-white transition-colors">Un mes te va bien… y el siguiente no</p></div>
+        <div class="flex items-center gap-5 group"><span class="font-label text-primary text-xl">04</span><p class="text-xl md:text-3xl font-bold text-on-surface-variant group-hover:text-white transition-colors">No sabes qué anuncio escalar</p></div>
+        <div class="flex items-center gap-5 group"><span class="font-label text-primary text-xl">05</span><p class="text-xl md:text-3xl font-bold text-on-surface-variant group-hover:text-white transition-colors">Sientes que dependes de la suerte</p></div>
+      </div>
+      <div class="pt-6 border-t border-outline-variant/20">
+        <p class="text-xl md:text-3xl font-black italic uppercase tracking-tighter">"No es tu producto. Es cómo estás intentando crecer."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="py-24 md:py-40 px-5 md:px-8 bg-surface">
+  <div class="max-w-5xl mx-auto text-center space-y-10 md:space-y-16">
+    <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter italic leading-none">Escalar no es <br/><span class="text-primary">gastar más</span></h2>
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 text-left items-center">
+      <p class="text-lg md:text-2xl leading-relaxed text-on-surface-variant">La mayoría de e-commerce se queda estancado por una razón simple: están comprando tráfico… sin tener algo sólido que escalar.</p>
+      <div class="p-8 md:p-12" style="background:#8930D6;"><p class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-tight italic text-white">Más presupuesto sin estructura solo acelera errores.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low" id="resultados">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 md:mb-20">
+      <span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Estructura &amp; Datos Reales</span>
+      <h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">Esto es lo que pasa<br/>cuando hay estructura</h2>
+    </div>
+    <div class="flex flex-col gap-8 md:gap-12">
+      <div class="overflow-x-auto custom-scrollbar pb-6 flex gap-4 md:gap-6 snap-x snap-mandatory">
+        <div class="flex-none w-[88vw] md:w-[800px] snap-center"><div class="bg-surface-container-highest border border-primary/20 p-1.5 shadow-2xl"><img alt="Result A" class="w-full h-auto" src="image (60).png"/><div class="p-4 md:p-6 bg-black"><span class="font-label text-primary text-xs uppercase tracking-widest">Case Study A</span><p class="text-xl font-black italic uppercase mt-1">ROAS 168.29</p><p class="text-xs text-on-surface-variant mt-1 font-label">De campañas inestables a estructura clara</p></div></div></div>
+        <div class="flex-none w-[88vw] md:w-[800px] snap-center"><div class="bg-surface-container-highest border border-primary/20 p-1.5 shadow-2xl"><img alt="Result B" class="w-full h-auto" src="image (67).png"/><div class="p-4 md:p-6 bg-black"><span class="font-label text-primary text-xs uppercase tracking-widest">Case Study B</span><p class="text-xl font-black italic uppercase mt-1">Ángulos Ganadores</p><p class="text-xs text-on-surface-variant mt-1 font-label">De una creatividad a un sistema</p></div></div></div>
+        <div class="flex-none w-[88vw] md:w-[800px] snap-center"><div class="bg-surface-container-highest border border-primary/20 p-1.5 shadow-2xl"><img alt="Result C" class="w-full h-auto" src="image (68).png"/><div class="p-4 md:p-6 bg-black"><span class="font-label text-primary text-xs uppercase tracking-widest">Case Study C</span><p class="text-xl font-black italic uppercase mt-1">Facturación Constante</p><p class="text-xs text-on-surface-variant mt-1 font-label">Escalado sostenido sin depender del orgánico</p></div></div></div>
+        <div class="flex-none w-[88vw] md:w-[800px] snap-center"><div class="bg-surface-container-highest border border-primary/20 p-1.5 shadow-2xl"><img alt="Result D" class="w-full h-auto" src="image (69).png"/><div class="p-4 md:p-6 bg-black"><span class="font-label text-primary text-xs uppercase tracking-widest">Case Study D</span><p class="text-xl font-black italic uppercase mt-1">+258M · ROAS 39.24</p><p class="text-xs text-on-surface-variant mt-1 font-label">Decisiones sobre datos, no intuición</p></div></div></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div class="p-8 md:p-12 flex flex-col justify-center" style="background:#8930D6;"><span class="text-5xl md:text-6xl font-black italic tracking-tighter text-white">×65.94</span><p class="font-label uppercase font-bold text-base md:text-lg mt-3 text-white/80">ROAS PROMEDIO GLOBAL</p></div>
+        <div class="bg-surface-container-high p-7 md:p-10 border-l-4 border-primary flex items-center"><p class="text-xl md:text-2xl font-bold leading-tight italic">"No es suerte. Es lo que pasa cuando se encuentra qué vende y se le inyecta sistema."</p></div>
+        <div class="bg-surface-container-highest p-7 md:p-10 flex flex-col justify-center"><div class="grid grid-cols-3 gap-4 text-center"><div><span class="block text-2xl md:text-3xl font-black text-primary">82%</span><span class="font-label text-[9px] uppercase">Conv. Up</span></div><div><span class="block text-2xl md:text-3xl font-black text-primary">-45%</span><span class="font-label text-[9px] uppercase">CPA Down</span></div><div><span class="block text-2xl md:text-3xl font-black text-primary">×3.2</span><span class="font-label text-[9px] uppercase">Revenue</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface" id="proceso">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 md:gap-20">
+    <div class="md:w-1/3"><h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none md:sticky md:top-32">Aquí es donde entra <br/><span class="text-primary">Bia Agency</span></h2></div>
+    <div class="md:w-2/3 space-y-12 md:space-y-24">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
+        <div class="space-y-4"><div class="w-11 h-11 flex items-center justify-center bg-primary"><span class="material-symbols-outlined text-white">search</span></div><h4 class="text-xl font-bold uppercase">Detección de Ángulos</h4><p class="text-on-surface-variant text-sm leading-relaxed">Detectamos qué producto o ángulo responde al mercado antes de quemar presupuesto.</p></div>
+        <div class="space-y-4"><div class="w-11 h-11 flex items-center justify-center bg-primary"><span class="material-symbols-outlined text-white">bolt</span></div><h4 class="text-xl font-bold uppercase">Iteración Veloz</h4><p class="text-on-surface-variant text-sm leading-relaxed">Probamos rápido hasta encontrar lo que convierte. No esperamos a la suerte, la forzamos.</p></div>
+        <div class="space-y-4"><div class="w-11 h-11 flex items-center justify-center bg-primary"><span class="material-symbols-outlined text-white">trending_up</span></div><h4 class="text-xl font-bold uppercase">Escalado Vertical</h4><p class="text-on-surface-variant text-sm leading-relaxed">Escalamos lo que funciona con precisión quirúrgica, protegiendo siempre tus márgenes.</p></div>
+        <div class="space-y-4"><div class="w-11 h-11 flex items-center justify-center bg-primary"><span class="material-symbols-outlined text-white">content_cut</span></div><h4 class="text-xl font-bold uppercase">Optimización Letal</h4><p class="text-on-surface-variant text-sm leading-relaxed">Cortamos lo que no sirve. No nos enamoramos de creativos que no traen dinero.</p></div>
+      </div>
+      <div class="bg-surface-container-highest p-8 md:p-12 text-center border-l-8 border-primary"><p class="text-xl md:text-3xl font-black italic uppercase tracking-tighter">"No manejamos anuncios. Encontramos qué vende y lo escalamos."</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14 md:mb-20 reveal"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Paso a paso</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">Así funciona el <span class="text-primary">proceso</span></h2></div>
+    <div class="relative pl-14 md:pl-16">
+      <div class="timeline-line"></div>
+      <div class="relative flex gap-6 md:gap-8 mb-10 md:mb-16 reveal"><div class="timeline-dot absolute -left-0 top-0"><span class="font-black text-white text-base">01</span></div><div class="bg-surface-container-highest border border-primary/20 p-6 md:p-8 flex-1 hover:border-primary/50 transition-colors"><div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary text-2xl">search</span><h3 class="text-xl font-black uppercase">Diagnóstico Inicial</h3></div><p class="text-on-surface-variant text-sm leading-relaxed">Revisamos tu cuenta, oferta y métricas reales. Identificamos el problema antes de tocar un peso.</p><span class="font-label text-[10px] uppercase text-primary tracking-widest mt-3 block">Semana 1 · Post-compra</span></div></div>
+      <div class="relative flex gap-6 md:gap-8 mb-10 md:mb-16 reveal"><div class="timeline-dot absolute -left-0 top-0"><span class="font-black text-white text-base">02</span></div><div class="bg-surface-container-highest border border-primary/20 p-6 md:p-8 flex-1 hover:border-primary/50 transition-colors"><div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary text-2xl">architecture</span><h3 class="text-xl font-black uppercase">Construcción de Estructura</h3></div><p class="text-on-surface-variant text-sm leading-relaxed">Diseñamos la arquitectura de campañas, ángulos de prueba y creativos de performance.</p><span class="font-label text-[10px] uppercase text-primary tracking-widest mt-3 block">Semana 1–2 · Setup completo</span></div></div>
+      <div class="relative flex gap-6 md:gap-8 mb-10 md:mb-16 reveal"><div class="timeline-dot absolute -left-0 top-0"><span class="font-black text-white text-base">03</span></div><div class="bg-surface-container-highest border border-primary/20 p-6 md:p-8 flex-1 hover:border-primary/50 transition-colors"><div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary text-2xl">bolt</span><h3 class="text-xl font-black uppercase">Iteración Acelerada</h3></div><p class="text-on-surface-variant text-sm leading-relaxed">Lanzamos, medimos y ajustamos. Cortamos lo que no convierte y potenciamos lo que sí.</p><span class="font-label text-[10px] uppercase text-primary tracking-widest mt-3 block">Semana 2–4 · Testing activo</span></div></div>
+      <div class="relative flex gap-6 md:gap-8 mb-10 md:mb-16 reveal"><div class="timeline-dot absolute -left-0 top-0"><span class="font-black text-white text-base">04</span></div><div class="bg-surface-container-highest border border-primary/20 p-6 md:p-8 flex-1 hover:border-primary/50 transition-colors"><div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-primary text-2xl">trending_up</span><h3 class="text-xl font-black uppercase">Escalado Controlado</h3></div><p class="text-on-surface-variant text-sm leading-relaxed">Escalamos con precisión. Protegemos el ROAS mientras aumentamos el volumen de inversión.</p><span class="font-label text-[10px] uppercase text-primary tracking-widest mt-3 block">Mes 2+ · Crecimiento real</span></div></div>
+      <div class="relative flex gap-6 md:gap-8 reveal"><div class="timeline-dot absolute -left-0 top-0" style="background:#0d0d0d;border:2px solid #8930D6;"><span class="font-black text-primary text-base">05</span></div><div class="p-6 md:p-8 flex-1" style="background:#8930D6;"><div class="flex items-center gap-3 mb-3"><span class="material-symbols-outlined text-white text-2xl">auto_graph</span><h3 class="text-xl font-black uppercase text-white">Sistema Autónomo</h3></div><p class="text-white/80 text-sm leading-relaxed font-bold">Tu tienda deja de depender de la suerte. Tienes un sistema que genera ventas predecibles y escalables.</p><span class="font-label text-[10px] uppercase text-white/60 tracking-widest mt-3 block">Objetivo final</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEED -->
+<section class="py-20 md:py-32 px-5 md:px-8 text-white" style="background:#8930D6;">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+    <div class="md:w-1/2"><h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] italic">No somos más creativos…<br/>somos más <span class="underline">rápidos.</span></h2></div>
+    <div class="md:w-1/2"><p class="text-xl md:text-3xl font-bold leading-tight uppercase tracking-tight text-white/80">Mientras otros tardan semanas en probar ideas… nosotros iteramos hasta encontrar lo que funciona.</p></div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14 md:mb-20 reveal"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">¿Por qué Bia Agency?</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">Bia vs <span class="text-primary">Agencia Tradicional</span></h2></div>
+    <div class="border border-primary/20 overflow-hidden reveal">
+      <div class="grid grid-cols-3 bg-surface-container-highest"><div class="p-4 md:p-6 border-r border-outline-variant/20"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Criterio</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 text-center" style="background:rgba(137,48,214,0.08);"><p class="font-black uppercase text-primary tracking-widest text-xs md:text-sm">Bia Agency</p></div><div class="p-4 md:p-6 text-center"><p class="font-black uppercase text-on-surface-variant tracking-widest text-xs md:text-sm">Tradicional</p></div></div>
+      <div class="compare-row grid grid-cols-3 border-t border-outline-variant/10"><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Enfoque</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center gap-2" style="background:rgba(137,48,214,0.04);"><span class="text-primary font-bold">✓</span><p class="font-bold text-xs md:text-sm">Resultados y escalado</p></div><div class="p-4 md:p-6 flex items-center gap-2"><span class="text-error font-bold">✗</span><p class="font-bold text-xs text-on-surface-variant">Manejo de anuncios</p></div></div>
+      <div class="compare-row grid grid-cols-3 border-t border-outline-variant/10"><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Velocidad</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center gap-2" style="background:rgba(137,48,214,0.04);"><span class="text-primary font-bold">✓</span><p class="font-bold text-xs md:text-sm">Días</p></div><div class="p-4 md:p-6 flex items-center gap-2"><span class="text-error font-bold">✗</span><p class="font-bold text-xs text-on-surface-variant">Semanas o meses</p></div></div>
+      <div class="compare-row grid grid-cols-3 border-t border-outline-variant/10"><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Decisiones</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center gap-2" style="background:rgba(137,48,214,0.04);"><span class="text-primary font-bold">✓</span><p class="font-bold text-xs md:text-sm">Datos reales</p></div><div class="p-4 md:p-6 flex items-center gap-2"><span class="text-error font-bold">✗</span><p class="font-bold text-xs text-on-surface-variant">Opiniones</p></div></div>
+      <div class="compare-row grid grid-cols-3 border-t border-outline-variant/10"><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Modelo</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center gap-2" style="background:rgba(137,48,214,0.04);"><span class="text-primary font-bold">✓</span><p class="font-bold text-xs md:text-sm">Especializado</p></div><div class="p-4 md:p-6 flex items-center gap-2"><span class="text-error font-bold">✗</span><p class="font-bold text-xs text-on-surface-variant">Cliente #47 de 200</p></div></div>
+      <div class="compare-row grid grid-cols-3 border-t border-outline-variant/10"><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center"><p class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">Experiencia</p></div><div class="p-4 md:p-6 border-r border-outline-variant/20 flex items-center gap-2" style="background:rgba(137,48,214,0.04);"><span class="text-primary font-bold">✓</span><p class="font-bold text-xs md:text-sm">+6 años · 8 países</p></div><div class="p-4 md:p-6 flex items-center gap-2"><span class="text-error font-bold">✗</span><p class="font-bold text-xs text-on-surface-variant">Variable</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAÍSES -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10 md:mb-16"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Presencia Internacional</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic leading-none">Performance adaptado<br/>a cada mercado</h2></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇨🇴</span><div><p class="font-black uppercase text-xs md:text-sm">Colombia</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Local</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇲🇽</span><div><p class="font-black uppercase text-xs md:text-sm">México</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Regional</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇨🇱</span><div><p class="font-black uppercase text-xs md:text-sm">Chile</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Performance</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇺🇸</span><div><p class="font-black uppercase text-xs md:text-sm">EE.UU.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Premium</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇪🇨</span><div><p class="font-black uppercase text-xs md:text-sm">Ecuador</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Growth</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇵🇪</span><div><p class="font-black uppercase text-xs md:text-sm">Perú</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Optimización</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇺🇾</span><div><p class="font-black uppercase text-xs md:text-sm">Uruguay</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Escalado</p></div></div>
+      <div class="bg-surface-container-highest border border-primary/10 p-4 md:p-6 flex items-center gap-3 hover:border-primary transition-colors"><span class="text-2xl md:text-3xl">🇩🇴</span><div><p class="font-black uppercase text-xs md:text-sm">R. Dominicana</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Performance</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-black" id="planes">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 md:mb-20">
+      <span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Elige tu Plan de Crecimiento</span>
+      <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter italic">Planes de Alto Rendimiento</h2>
+      <p class="text-on-surface-variant mt-4 max-w-xl mx-auto text-sm">Suscripción mensual vía Hotmart · Sin contratos anuales · Cancela cuando quieras</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 items-start">
+
+      <!-- Sprint -->
+      <div class="plan-card bg-surface-container border border-primary/20 p-7 md:p-10 flex flex-col h-full relative shadow-2xl">
+        <div class="mb-6 md:mb-8"><h3 class="text-2xl md:text-3xl font-black uppercase italic mb-2">Sprint de Validación</h3><div class="flex items-baseline gap-2"><span class="text-4xl md:text-5xl font-black text-primary">USD 280</span><span class="text-on-surface-variant font-label uppercase text-xs">/ Mes</span></div></div>
+        <div class="mb-6 bg-surface-container-low p-4 border-l-4 border-primary"><p class="text-sm font-bold italic text-on-surface-variant">Te ayuda a salir del ruido y encontrar qué escalar.</p></div>
+        <ul class="space-y-3 mb-10 flex-grow">
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Pauta hasta USD 2.000/mes</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Campañas en Meta Ads</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Estructura inicial de testing</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Revisión del producto/oferta</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Desarrollo de anuncios visuales</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Optimización base</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">2 revisiones/mes</span></li>
+        </ul>
+        <a href="https://pay.hotmart.com/TU_PRODUCTO_SPRINT" target="_blank" class="w-full py-4 border-2 border-primary text-primary font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-colors text-sm text-center block">Comprar Sprint →</a>
+        <p class="font-label text-[9px] text-center text-on-surface-variant uppercase tracking-widest mt-3">Pago seguro · Hotmart</p>
+      </div>
+
+      <!-- RECOMENDADO (fondo blanco) -->
+      <div class="plan-card plan-featured relative z-10 flex flex-col h-full bg-white" style="border:4px solid #8930D6;">
+        <div class="absolute -top-px left-0 right-0 flex justify-center pointer-events-none">
+          <span class="purple-shimmer font-black text-[11px] px-8 py-2 uppercase tracking-widest font-label" style="letter-spacing:.18em;">⚡ RECOMENDADO ⚡</span>
+        </div>
+        <div class="absolute top-0 left-0 right-0 h-[3px]" style="background:linear-gradient(90deg,transparent,#B86EFF,#8930D6,#B86EFF,transparent);"></div>
+        <div class="p-7 md:p-10 flex flex-col flex-grow pt-10">
+          <div class="mb-6 md:mb-8">
+            <h3 class="text-3xl md:text-4xl font-black uppercase italic mb-2" style="color:#6B26AB;">Escalado Base</h3>
+            <div class="flex items-baseline gap-2 flex-wrap"><span class="text-4xl md:text-6xl font-black" style="color:#111;">USD 650</span><span class="font-label uppercase text-[10px] font-bold" style="color:#666;">/ Mes + 5% excedente</span></div>
+          </div>
+          <div class="mb-6 p-4 border-l-4" style="border-color:#8930D6;background:rgba(137,48,214,0.07);"><p class="text-sm font-bold italic" style="color:#555;">Tu crecimiento deja de depender de la suerte.</p></div>
+          <ul class="space-y-3 mb-10 flex-grow">
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Pauta hasta USD 8.000/mes</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Meta / Google / TikTok Ads</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Estructura de escalado</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Testing creativo constante</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Anuncios de performance</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Revisión estratégica</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">Optimización continua</span></li>
+            <li class="flex items-start gap-3"><span style="color:#8930D6;" class="font-bold mt-0.5">✓</span><span class="text-xs md:text-sm uppercase font-black tracking-tight" style="color:#111;">2 revisiones estratégicas/mes</span></li>
+          </ul>
+          <a href="https://pay.hotmart.com/TU_PRODUCTO_BASE" target="_blank" class="w-full py-5 font-black uppercase tracking-widest text-base text-white text-center block hover:opacity-90 transition-opacity" style="background:#8930D6;box-shadow:0 0 30px rgba(137,48,214,0.5);">Quiero Escalar →</a>
+          <p class="text-center font-label text-[9px] uppercase tracking-widest mt-3" style="color:#8930D6;">El plan más elegido · Hotmart</p>
+        </div>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="plan-card bg-surface-container border border-primary/20 p-7 md:p-10 flex flex-col h-full relative shadow-2xl">
+        <div class="mb-6 md:mb-8"><h3 class="text-2xl md:text-3xl font-black uppercase italic mb-2">Enterprise</h3><span class="text-4xl md:text-5xl font-black text-primary">CUSTOM</span></div>
+        <div class="mb-6 bg-surface-container-low p-4 border-l-4 border-primary"><p class="text-sm font-bold italic text-on-surface-variant">Para marcas que ya no necesitan una agencia más…</p></div>
+        <ul class="space-y-3 mb-10 flex-grow">
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">◆</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Estructura personalizada</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">◆</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Gestión y estrategia adaptadas</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">◆</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Escalado profundo</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">◆</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Mayor acompañamiento</span></li>
+          <li class="flex items-start gap-3"><span class="text-primary font-bold mt-0.5">◆</span><span class="text-xs md:text-sm uppercase font-bold tracking-tight text-on-surface-variant">Propuesta adaptada a tu marca</span></li>
+        </ul>
+        <a href="https://wa.me/TU_NUMERO?text=Hola%2C%20me%20interesa%20el%20plan%20Enterprise%20de%20Bia%20Agency" target="_blank" class="w-full py-4 font-black uppercase tracking-widest text-sm text-white text-center block hover:opacity-90" style="background:#8930D6;">Hablar con el equipo →</a>
+      </div>
+    </div>
+    <div class="mt-10 flex flex-wrap justify-center gap-8 text-center">
+      <div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary">🔒</span><span class="font-label text-[10px] uppercase tracking-widest">Pago 100% Seguro</span></div>
+      <div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary">↩</span><span class="font-label text-[10px] uppercase tracking-widest">Cancela cuando quieras</span></div>
+      <div class="flex items-center gap-2 text-on-surface-variant"><span class="text-primary">✓</span><span class="font-label text-[10px] uppercase tracking-widest">Procesado por Hotmart</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-12 md:mb-20"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Las personas detrás del sistema</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">El Equipo</h2><p class="text-on-surface-variant mt-3 text-sm md:text-lg max-w-2xl">Criterio construido sobre cuentas reales. +6 años trabajando performance para marcas en Latam y EE.UU.</p></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 max-w-4xl">
+      <div class="space-y-5 group">
+        <div class="aspect-[4/5] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 border-b-4 border-primary/10 group-hover:border-primary relative bg-surface-container-highest flex items-center justify-center">
+          <!-- REEMPLAZA CON FOTO REAL DE BIANCA: <img src="bianca.jpg" alt="Bianca Benavides" class="w-full h-full object-cover"/> -->
+          <span class="font-black text-[8rem] italic text-primary/10">B</span>
+          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,.7),transparent);">
+            <a href="https://www.instagram.com/biancabenavides_ec/" target="_blank" class="flex items-center gap-2 text-white text-xs font-label hover:text-primary transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              @biancabenavides_ec
+            </a>
+          </div>
+        </div>
+        <div><h3 class="text-xl md:text-2xl font-black uppercase italic">Bianca Benavides</h3><p class="font-label text-primary text-xs uppercase tracking-widest mb-2">Co-founder · Estrategia &amp; Performance</p><p class="text-on-surface-variant font-bold italic border-l-2 border-primary pl-4 py-1 text-xs md:text-sm">Especialista en escalado de e-commerce y estrategia de performance digital. Referente en Latam para marcas que buscan crecer con estructura real. Cara visible de Bia Agency.</p></div>
+      </div>
+      <div class="space-y-5 group">
+        <div class="aspect-[4/5] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 border-b-4 border-primary/10 group-hover:border-primary bg-surface-container-highest flex items-center justify-center">
+          <!-- REEMPLAZA CON FOTO REAL DE MARIO: <img src="mario.jpg" alt="Mario Hernández" class="w-full h-full object-cover"/> -->
+          <span class="font-black text-[8rem] italic text-primary/10">M</span>
+        </div>
+        <div><h3 class="text-xl md:text-2xl font-black uppercase italic">Jhon Mario Hernández</h3><p class="font-label text-primary text-xs uppercase tracking-widest mb-2">Co-founder · Arquitectura &amp; Growth</p><p class="text-on-surface-variant font-bold italic border-l-2 border-primary pl-4 py-1 text-xs md:text-sm">+6 años en marketing digital y performance. Clientes en 8 países de Latam y EE.UU. Diseña los sistemas de escalado y la arquitectura de campañas que convierte inversión publicitaria en ventas predecibles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low" id="testimonios">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-10 md:mb-16"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Lo que pasa cuando deja de ser improvisado</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">Cuando la estructura cambia,<br/>los resultados también</h2></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px" style="background:#111;">
+      <div class="bg-surface p-8 md:p-16 space-y-6"><span class="text-primary text-5xl font-black leading-none">"</span><p class="text-xl md:text-3xl font-bold italic">"Antes subíamos presupuesto y el rendimiento se rompía. Con Bia Agency empezamos a tener claridad sobre qué escalar."</p><div class="pt-6 border-t border-outline-variant/20"><p class="font-label text-xs uppercase tracking-widest text-primary">Founder @ UrbanTech</p></div></div>
+      <div class="bg-surface p-8 md:p-16 space-y-6" style="border-left:1px solid #1c1c1c;"><span class="text-primary text-5xl font-black leading-none">"</span><p class="text-xl md:text-3xl font-bold italic">"No era falta de ventas. Era falta de estructura. Entendieron el negocio antes que el pixel."</p><div class="pt-6 border-t border-outline-variant/20"><p class="font-label text-xs uppercase tracking-widest text-primary">CEO @ GlowSkincare</p></div></div>
+      <div class="bg-surface-container-high p-8 md:p-16 space-y-6" style="border-top:1px solid #1c1c1c;"><span class="text-primary text-5xl font-black leading-none">"</span><p class="text-xl md:text-3xl font-bold italic">"Empezamos a entender qué anuncios merecían más presupuesto y cuáles consumían dinero."</p><div class="pt-6 border-t border-outline-variant/20"><p class="font-label text-xs uppercase tracking-widest text-primary">Director @ FitBrands Latam</p></div></div>
+      <div class="bg-surface-container-high p-8 md:p-16 space-y-6" style="border-top:1px solid #1c1c1c;border-left:1px solid #1c1c1c;"><span class="text-primary text-5xl font-black leading-none">"</span><p class="text-xl md:text-3xl font-bold italic">"No necesitábamos más tráfico. Bia Agency fue la diferencia entre improvisar y tener un sistema."</p><div class="pt-6 border-t border-outline-variant/20"><p class="font-label text-xs uppercase tracking-widest text-primary">CMO @ NovaModa México</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface" id="reviews">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 md:mb-16 reveal"><h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter italic">Lo que dicen en <span class="text-primary">Google</span></h2><div class="flex items-center justify-center gap-3 mt-5"><span class="text-4xl md:text-5xl font-black">4.9</span><div><div class="text-primary text-xl md:text-2xl">★★★★★</div><p class="font-label text-[9px] uppercase text-on-surface-variant tracking-widest mt-1">Google Business</p></div></div></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <div class="review-card bg-surface-container-highest border border-outline-variant/20 p-6 md:p-8 flex flex-col gap-4"><div class="text-primary text-sm">★★★★★</div><p class="text-on-surface-variant leading-relaxed font-bold italic flex-1 text-sm">"En menos de 3 semanas teníamos estructura clara y los números empezaron a mejorar."</p><div class="pt-4 border-t border-outline-variant/20 flex items-center gap-3"><div class="w-9 h-9 bg-primary flex items-center justify-center font-black text-white text-sm">C</div><div><p class="font-black uppercase text-xs">Carlos M.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Moda · Colombia</p></div></div></div>
+      <div class="review-card bg-surface-container-highest border border-outline-variant/20 p-6 md:p-8 flex flex-col gap-4"><div class="text-primary text-sm">★★★★★</div><p class="text-on-surface-variant leading-relaxed font-bold italic flex-1 text-sm">"Llevaba un año con otra agencia sin resultados. El primer mes con Bia Agency entendí por qué fallaba antes."</p><div class="pt-4 border-t border-outline-variant/20 flex items-center gap-3"><div class="w-9 h-9 bg-primary flex items-center justify-center font-black text-white text-sm">A</div><div><p class="font-black uppercase text-xs">Andrea R.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Skincare · México</p></div></div></div>
+      <div class="review-card bg-surface-container-highest border border-outline-variant/20 p-6 md:p-8 flex flex-col gap-4"><div class="text-primary text-sm">★★★★★</div><p class="text-on-surface-variant leading-relaxed font-bold italic flex-1 text-sm">"El ROAS lo logramos. Más importante: ahora sé qué escalar y qué cortar."</p><div class="pt-4 border-t border-outline-variant/20 flex items-center gap-3"><div class="w-9 h-9 bg-primary flex items-center justify-center font-black text-white text-sm">D</div><div><p class="font-black uppercase text-xs">Diego P.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">FitBrands · Chile</p></div></div></div>
+      <div class="review-card bg-surface-container-highest border border-outline-variant/20 p-6 md:p-8 flex flex-col gap-4"><div class="text-primary text-sm">★★★★★</div><p class="text-on-surface-variant leading-relaxed font-bold italic flex-1 text-sm">"Trabajé con tres agencias. Bia Agency es la única que me habló de márgenes y oferta antes de ads."</p><div class="pt-4 border-t border-outline-variant/20 flex items-center gap-3"><div class="w-9 h-9 bg-primary flex items-center justify-center font-black text-white text-sm">V</div><div><p class="font-black uppercase text-xs">Valentina S.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">NovaModa · México</p></div></div></div>
+      <div class="review-card bg-surface-container-highest border border-outline-variant/20 p-6 md:p-8 flex flex-col gap-4"><div class="text-primary text-sm">★★★★★</div><p class="text-on-surface-variant leading-relaxed font-bold italic flex-1 text-sm">"6 meses estancada mi tienda. En el segundo mes con Bia Agency triplicamos ventas."</p><div class="pt-4 border-t border-outline-variant/20 flex items-center gap-3"><div class="w-9 h-9 bg-primary flex items-center justify-center font-black text-white text-sm">R</div><div><p class="font-black uppercase text-xs">Roberto A.</p><p class="font-label text-[9px] text-on-surface-variant uppercase">Suplementos · Perú</p></div></div></div>
+      <div class="p-6 md:p-8 flex flex-col justify-between gap-4" style="background:#8930D6;"><div><div class="text-white/40 text-xl mb-2">★★★★★</div><p class="text-4xl italic font-black text-white">4.9 / 5</p><p class="font-label text-[10px] uppercase tracking-widest text-white/50 mt-1">Google Reviews</p></div><a href="https://g.page/r/TU_GOOGLE_REVIEW_LINK" target="_blank" class="bg-black text-white font-black uppercase tracking-widest text-xs py-3 flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors">Ver todas en Google</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT FOR EVERYONE -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface-container-low border-y border-outline-variant/20">
+  <div class="max-w-7xl mx-auto space-y-12 md:space-y-20">
+    <div class="text-center"><h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter italic mb-4">No es para todos</h2><div class="h-1 w-32 md:w-40 bg-primary mx-auto"></div><p class="text-on-surface-variant mt-5 text-sm md:text-lg max-w-xl mx-auto">Solo entramos en marcas con señales reales.</p></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+      <div class="bg-surface-container-highest p-8 md:p-12 border-t-8 border-error"><h3 class="font-label text-error uppercase tracking-widest text-lg md:text-2xl mb-8">NO ES PARA TI SI:</h3><ul class="space-y-5 md:space-y-8"><li class="flex items-start gap-4"><span class="text-error font-bold text-lg">✗</span><span class="text-base md:text-xl font-bold uppercase opacity-60 italic">No has vendido nada todavía</span></li><li class="flex items-start gap-4"><span class="text-error font-bold text-lg">✗</span><span class="text-base md:text-xl font-bold uppercase opacity-60 italic">No tienes producto validado</span></li><li class="flex items-start gap-4"><span class="text-error font-bold text-lg">✗</span><span class="text-base md:text-xl font-bold uppercase opacity-60 italic">Buscas resultados sin inversión</span></li><li class="flex items-start gap-4"><span class="text-error font-bold text-lg">✗</span><span class="text-base md:text-xl font-bold uppercase opacity-60 italic">No tienes stock real para escalar</span></li></ul></div>
+      <div class="bg-surface-container-highest p-8 md:p-12 border-t-8 border-primary"><h3 class="font-label text-primary uppercase tracking-widest text-lg md:text-2xl mb-8">TRABAJAMOS CONTIGO SI:</h3><ul class="space-y-5 md:space-y-8"><li class="flex items-start gap-4"><span class="text-primary font-bold text-lg">✓</span><span class="text-base md:text-xl font-bold uppercase italic">Ya vendes y tienes stock real</span></li><li class="flex items-start gap-4"><span class="text-primary font-bold text-lg">✓</span><span class="text-base md:text-xl font-bold uppercase italic">Quieres escalar en serio y rápido</span></li><li class="flex items-start gap-4"><span class="text-primary font-bold text-lg">✓</span><span class="text-base md:text-xl font-bold uppercase italic">Listo para dejar de improvisar</span></li><li class="flex items-start gap-4"><span class="text-primary font-bold text-lg">✓</span><span class="text-base md:text-xl font-bold uppercase italic">El sistema importa más que la suerte</span></li></ul></div>
+    </div>
+    <p class="text-center text-xl md:text-3xl font-black italic uppercase tracking-tighter">"Si no hay base, no hay escalado."</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 md:py-32 px-5 md:px-8 bg-surface" id="faq">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-12 md:mb-20 reveal"><span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm mb-3 block">Todo lo que necesitas saber</span><h2 class="text-3xl md:text-6xl font-black uppercase tracking-tighter italic">Preguntas <span class="text-primary">Frecuentes</span></h2></div>
+    <div class="space-y-0 border border-outline-variant/20">
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿Necesito experiencia previa en ads?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">No. Nosotros nos encargamos de todo lo técnico. Lo que necesitas es un negocio activo con ventas reales y producto validado.</p></div></div>
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿En cuánto tiempo veo resultados?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">Primeros indicadores en 2–3 semanas. Resultados de escalado real entre el mes 1 y 2.</p></div></div>
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿El presupuesto de pauta está incluido?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">No. El plan cubre nuestra gestión. El presupuesto de pauta lo manejas tú directamente. Nosotros te decimos cómo y cuánto invertir.</p></div></div>
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿Cómo funciona el pago por Hotmart?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">Haces clic en "Comprar", Hotmart procesa el pago y al confirmar te redirige automáticamente a tu página de onboarding. Ahí nos dejas toda la info de tu negocio para arrancar.</p></div></div>
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿Puedo cancelar en cualquier momento?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">Sí. Compromisos mensuales, sin contratos anuales. El proceso necesita al menos 60 días para madurar correctamente.</p></div></div>
+      <div class="faq-item"><button class="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-surface-container-high transition-colors" onclick="toggleFaq(this)"><span class="font-black uppercase text-base md:text-lg pr-6">¿En qué países operan?</span><span class="text-primary text-2xl faq-icon flex-shrink-0 font-light">+</span></button><div class="faq-answer"><p class="text-on-surface-variant px-6 md:px-8 pb-6 md:pb-8 text-sm leading-relaxed font-bold">Colombia, México, Chile, Ecuador, Perú, Uruguay, República Dominicana y EE.UU. Otros países hispanohablantes, consúltanos.</p></div></div>
+    </div>
+    <div class="mt-8 bg-surface-container-highest p-6 md:p-8 border-l-4 border-primary text-center">
+      <p class="font-bold text-on-surface-variant mb-4 text-sm">¿Otra pregunta?</p>
+      <a href="https://wa.me/TU_NUMERO" target="_blank" class="inline-flex items-center gap-3 bg-[#25D366] text-white font-black uppercase tracking-widest text-xs px-6 py-3 hover:bg-[#1ebe5d] transition-colors"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Preguntar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-24 md:py-40 px-5 md:px-8 bg-surface relative overflow-hidden">
+  <div class="absolute inset-0" style="background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(137,48,214,0.07),transparent);"></div>
+  <div class="max-w-5xl mx-auto text-center space-y-8 md:space-y-12 relative z-10">
+    <h2 class="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] italic">Si tu tienda ya vende… pero sabes que puede dar más</h2>
+    <a href="#planes" class="inline-block w-full md:w-auto text-center font-black text-xl md:text-4xl px-10 md:px-16 py-6 md:py-8 uppercase text-white transition-all hover:opacity-90" style="background:#8930D6;box-shadow:0 0 50px rgba(137,48,214,0.4);">👉 Quiero escalar mi tienda</a>
+    <p class="font-label text-on-surface-variant uppercase tracking-[0.3em] text-xs">Suscripción mensual vía Hotmart. Cancela cuando quieras.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black w-full py-10 md:py-12 px-5 md:px-8 border-t border-outline-variant/20">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 w-full">
+    <img src="logo_bia.jpeg" alt="Bia Agency" class="h-10 w-auto object-contain"/>
+    <div class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant text-center">© 2025 Bia Agency. All rights reserved.</div>
+    <div class="flex gap-6">
+      <a class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+      <a class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Términos</a>
+      <a class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="https://wa.me/TU_NUMERO" target="_blank">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById('mobile-menu').classList.toggle('open',menuOpen);document.getElementById('ham1').style.transform=menuOpen?'rotate(45deg) translate(5px,5px)':'';document.getElementById('ham2').style.opacity=menuOpen?'0':'1';document.getElementById('ham3').style.transform=menuOpen?'rotate(-45deg) translate(5px,-5px)':'';}
+function closeMenu(){menuOpen=false;document.getElementById('mobile-menu').classList.remove('open');document.getElementById('ham1').style.transform='';document.getElementById('ham2').style.opacity='1';document.getElementById('ham3').style.transform='';}
+document.querySelectorAll('.counter-val').forEach(el=>{const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting){const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',dur=2200,start=performance.now();function update(now){const p=Math.min((now-start)/dur,1),v=1-Math.pow(1-p,3);el.textContent=Math.floor(v*target)+suffix;if(p<1)requestAnimationFrame(update);}requestAnimationFrame(update);obs.unobserve(el);}},{threshold:.5});obs.observe(el);});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target);}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+function toggleFaq(btn){const ans=btn.nextElementSibling,icon=btn.querySelector('.faq-icon'),open=ans.classList.contains('open');document.querySelectorAll('.faq-answer.open').forEach(a=>{a.classList.remove('open');a.previousElementSibling.querySelector('.faq-icon').classList.remove('open');});if(!open){ans.classList.add('open');icon.classList.add('open');}}
+const notifMsgs=[{icon:"🇲🇽",text:"<strong>Marca de México</strong> acaba de comprar el plan Sprint."},{icon:"🇨🇴",text:"<strong>3 negocios más</strong> se unieron esta semana."},{icon:"👀",text:"<strong>12 e-commerce</strong> están viendo esta oferta ahora."},{icon:"🇨🇱",text:"<strong>Tienda de Chile</strong> inició su Sprint de Validación."},{icon:"🔥",text:"<strong>5 marcas</strong> compraron su plan hoy."},{icon:"🇺🇸",text:"<strong>Marca de EE.UU.</strong> pasó al plan Escalado Base."},{icon:"⚡",text:"<strong>8 negocios</strong> están consultando los planes ahora."},{icon:"🇵🇪",text:"<strong>Tienda de Perú</strong> acaba de unirse al sistema."},{icon:"🏆",text:"<strong>Nuevo cliente</strong> logró ROAS ×18 en su primer mes."},{icon:"🇪🇨",text:"<strong>Marca de Ecuador</strong> escaló su presupuesto ×3."}];
+let notifIdx=0;const nc=document.getElementById('notif-container');
+function showNotif(){const d=notifMsgs[notifIdx%notifMsgs.length];notifIdx++;const el=document.createElement('div');el.className='notif-enter pointer-events-auto';el.style.cssText='background:#0d0d0d;border:1px solid rgba(137,48,214,0.2);border-left:3px solid #8930D6;padding:10px 14px;display:flex;align-items:center;gap:10px;max-width:280px;box-shadow:0 8px 30px rgba(0,0,0,0.6);';el.innerHTML=`<span style="font-size:20px;flex-shrink:0">${d.icon}</span><div style="flex:1;min-width:0"><p style="font-family:'Space Grotesk',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#f0f0f0;line-height:1.4;">${d.text}</p><p style="font-family:'Space Grotesk',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#8930D6;margin-top:2px;">Hace ${Math.floor(Math.random()*8)+1} min</p></div><div class="notif-dot" style="width:7px;height:7px;background:#8930D6;flex-shrink:0;border-radius:50%;"></div>`;nc.appendChild(el);setTimeout(()=>{el.className='notif-exit pointer-events-auto';el.addEventListener('animationend',()=>el.remove());},4500);}
+setTimeout(()=>{showNotif();function next(){const d=15000+Math.random()*3000;setTimeout(()=>{showNotif();next();},d);}next();},12000);
+</script>
+</body>
+</html>
