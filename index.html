@@ -76,29 +76,42 @@ select.agx-input option{background:#1a1a1a;color:#f0f0f0;}
 
 <!-- HERO -->
 <header class="relative pt-36 md:pt-48 pb-20 md:pb-32 px-5 md:px-8 hero-gradient overflow-hidden">
-  <div class="max-w-7xl mx-auto flex flex-col items-start gap-8 md:gap-12">
-    <div class="space-y-5 max-w-5xl w-full">
-      <span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm">Escalado de Alto Rendimiento</span>
-      <h1 class="text-[2.6rem] md:text-[5rem] font-black leading-[0.9] tracking-tighter uppercase italic font-headline">
-        Tu e-commerce <span class="text-primary">no</span> necesita <span class="text-primary">más tráfico.</span><br/>Necesita empezar a vender en serio.
-      </h1>
-      <p class="text-base md:text-2xl text-on-surface-variant max-w-3xl leading-relaxed">Si ya estás vendiendo pero no logras escalar, no es falta de mercado. Es que lo que estás haciendo no está construido para crecer.</p>
-    </div>
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full">
-      <div class="space-y-3 w-full sm:w-auto">
-        <a href="#planes" class="bg-primary text-white font-black text-base md:text-xl px-7 md:px-10 py-4 md:py-5 uppercase flex items-center gap-3 hover:shadow-[0_0_30px_rgba(137,48,214,0.5)] hover:bg-primary-dim transition-all w-full sm:w-auto justify-center sm:justify-start">
-          👉 Quiero escalar mi tienda
-        </a>
-        <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest pl-1">No trabajamos con tiendas en cero.</p>
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 lg:gap-20">
+
+      <!-- Texto + CTA -->
+      <div class="flex-1 flex flex-col gap-8 md:gap-12">
+        <div class="space-y-5">
+          <span class="font-label text-primary uppercase tracking-[0.3em] text-xs md:text-sm">Escalado de Alto Rendimiento</span>
+          <h1 class="text-[2.6rem] md:text-[5rem] font-black leading-[0.9] tracking-tighter uppercase italic font-headline">
+            Tu e-commerce <span class="text-primary">no</span> necesita <span class="text-primary">más tráfico.</span><br/>Necesita empezar a vender en serio.
+          </h1>
+          <!-- Avatar mobile: aparece entre el título y la descripción, pequeño y centrado -->
+          <div class="md:hidden flex justify-center py-3">
+            <img src="avatar_hero.png" alt="Bia Agency" class="w-36 h-36 object-contain"/>
+          </div>
+          <p class="text-base md:text-2xl text-on-surface-variant max-w-3xl leading-relaxed">Si ya estás vendiendo pero no logras escalar, no es falta de mercado. Es que lo que estás haciendo no está construido para crecer.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 w-full">
+          <div class="space-y-3 w-full sm:w-auto">
+            <a href="#planes" class="bg-primary text-white font-black text-base md:text-xl px-7 md:px-10 py-4 md:py-5 uppercase flex items-center gap-3 hover:shadow-[0_0_30px_rgba(137,48,214,0.5)] hover:bg-primary-dim transition-all w-full sm:w-auto justify-center sm:justify-start">
+              👉 Quiero escalar mi tienda
+            </a>
+            <p class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest pl-1">No trabajamos con tiendas en cero.</p>
+          </div>
+          <div class="bg-surface-container-high p-4 md:p-6 flex flex-col gap-1 border border-primary/30 w-full sm:w-auto">
+            <span class="font-label text-[9px] text-primary uppercase tracking-widest">Social Proof</span>
+            <p class="font-black text-lg md:text-2xl tracking-tighter italic">ROAS REALES: ×12 · ×18 · ×20</p>
+          </div>
+        </div>
       </div>
-      <div class="bg-surface-container-high p-4 md:p-6 flex flex-col gap-1 border border-primary/30 w-full sm:w-auto">
-        <span class="font-label text-[9px] text-primary uppercase tracking-widest">Social Proof</span>
-        <p class="font-black text-lg md:text-2xl tracking-tighter italic">ROAS REALES: ×12 · ×18 · ×20</p>
+
+      <!-- Avatar desktop: a la derecha del título, solo visible en md+ -->
+      <div class="hidden md:flex shrink-0 items-center justify-center md:w-[300px] lg:w-[380px]">
+        <img src="avatar_hero.png" alt="Bia Agency" class="w-full object-contain"/>
       </div>
+
     </div>
-  </div>
-  <div class="absolute -right-16 top-32 opacity-[0.03] select-none pointer-events-none hidden xl:block">
-    <span class="text-[22rem] font-black leading-none text-primary font-headline">BIA</span>
   </div>
 </header>
 
