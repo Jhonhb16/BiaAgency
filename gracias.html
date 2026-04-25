@@ -375,6 +375,43 @@ async function submitForm(){
   data.append('plan', new URLSearchParams(window.location.search).get('plan')||'No especificado');
   data.append('fuente','bia-agency-onboarding');
 
+  const intakePayload={
+    negocio:data.get('negocio'),
+    nombre:data.get('nombre'),
+    email:data.get('email'),
+    whatsapp:data.get('whatsapp'),
+    plan:data.get('plan'),
+    plataformas:data.get('plataformas'),
+    pais:data.get('pais'),
+    tipo_negocio:data.get('tipo_negocio'),
+    categoria:data.get('categoria'),
+    producto:data.get('producto'),
+    cliente_ideal:data.get('cliente_ideal'),
+    ventas_mes:data.get('ventas_mes'),
+    inversion_pauta:data.get('inversion_pauta'),
+    roas_actual:data.get('roas_actual'),
+    objetivo_principal:data.get('objetivo_principal'),
+    horizonte:data.get('horizonte'),
+    mayor_problema:data.get('mayor_problema'),
+    accesos:data.get('accesos'),
+    stock:data.get('stock'),
+    agencia_previa:data.get('agencia_previa'),
+    como_llego:data.get('como_llego'),
+    notas:data.get('notas')
+  };
+
+  try{
+    const intakeRes=await fetch('https://app.biagency.site/api/intake',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Intake-Token':'bia-intake-2026'},
+      body:JSON.stringify(intakePayload)
+    });
+    const intakeJson=await intakeRes.json().catch(()=>({}));
+    if(!intakeRes.ok||intakeJson.ok===false){throw new Error(intakeJson.error||`Bia Ops intake ${intakeRes.status}`);}
+    if(intakeJson.clientId){data.append('clientId',intakeJson.clientId);localStorage.setItem('biaOpsClientId',intakeJson.clientId);}
+    if(intakeJson.accessToken){data.append('accessToken',intakeJson.accessToken);localStorage.setItem('biaOpsAccessToken',intakeJson.accessToken);}
+  }catch(e){console.warn('Bia Ops intake error:',e);}
+
   try{
     await fetch('https://iagentflow.pro/api/v1/leads/website_form',{method:'POST',body:data});
   }catch(e){console.warn('CRM error:',e);}
